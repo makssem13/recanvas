@@ -8,6 +8,7 @@ authors = [
   { name="Semenii Maksym", email="maks20sem@gmail.com" },
 ]
 description = "Tkinter Canvas but PIL"
+dependencies = ["Pillow"]
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
