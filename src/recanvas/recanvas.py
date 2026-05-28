@@ -29,7 +29,7 @@ class reCanvas:
         self.isdraw = isdraw
         self.basebuf = None
         self.buf = Image.new(colormode, (self.x, self.y), "white")
-        self.screen = ImageTk.PhotoImage(self.buf, master=self.root)
+        if self.isdraw: self.screen = ImageTk.PhotoImage(self.buf, master=self.root)
         if self.isdraw: self.image_screen = self.canvas.create_image(0, 0, anchor="nw", image=self.screen)
         self.draw = None
         self.bg = bg
