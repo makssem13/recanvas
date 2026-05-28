@@ -26,7 +26,7 @@ class reCanvas:
         self.x = width
         self.y = height
         self.root = root
-        self.isdraw = draw
+        self.isdraw = isdraw
         self.basebuf = None
         self.buf = Image.new(colormode, (self.x, self.y), "white")
         self.screen = ImageTk.PhotoImage(self.buf, master=self.root)
