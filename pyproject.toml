@@ -21,3 +21,7 @@ dynamic = ["version"]
 
 [tool.setuptools_scm]
 write_to = "src/recanvas/_version.py"
+
+[project.urls]
+Homepage = "https://github.com/makssem13/recanvas"
+Issues = "https://github.com/makssem13/recanvas/issues"

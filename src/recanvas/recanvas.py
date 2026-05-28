@@ -19,26 +19,27 @@ class reObj:
 
 
 class reCanvas:
-    def __init__(self, root, width=100, height=100, bd=1, highlightthickness=1, bg="#000000"):
+    def __init__(self, root, width=100, height=100, bd=1, highlightthickness=1, bg="#000000", isdraw=True):
         self.objs = []
-        self.canvas = tk.Canvas(root, width=width, height=height,\
+        if draw: self.canvas = tk.Canvas(root, width=width, height=height,\
                                 bd=bd, highlightthickness=highlightthickness)
         self.x = width
         self.y = height
         self.root = root
+        self.isdraw = draw
         self.basebuf = None
         self.buf = Image.new("RGB", (self.x, self.y), "white")
         self.screen = ImageTk.PhotoImage(self.buf, master=self.root)
-        self.image_screen = self.canvas.create_image(0, 0, anchor="nw", image=self.screen)
+        if self.isdraw: self.image_screen = self.canvas.create_image(0, 0, anchor="nw", image=self.screen)
         self.draw = None
         self.bg = bg
         
     def pack(self):
-        self.canvas.pack()
+        if self.isdraw: self.canvas.pack()
 
-    def winfo_height(self): return self.canvas.winfo_height()
+    def winfo_height(self): return self.canvas.winfo_height() if self.isdraw else None
 
-    def winfo_width(self): return self.canvas.winfo_width()
+    def winfo_width(self): return self.canvas.winfo_width() if self.isdraw else None
 
     def create_rectangle(self, a, b, c, d, fill="#000000", outline="#000000", width=1):
         self.objs.append(reObj(reObjT.RECT, (a,b,c,d), fill=fill, outline=outline, width=width))
@@ -98,5 +99,6 @@ class reCanvas:
                     self.draw.line(obj.coords, fill=obj.color, width=obj.width)
                 case reObjT.POLY:
                     self.draw.polygon(obj.coords, fill=obj.color, outline=obj.outline, width=obj.width)
-        self.screen.paste(self.buf)
-        self.canvas.itemconfig(self.image_screen, image=self.screen)
+        if self.isdraw:
+            self.screen.paste(self.buf)
+            self.canvas.itemconfig(self.image_screen, image=self.screen)
