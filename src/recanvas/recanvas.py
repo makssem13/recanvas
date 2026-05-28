@@ -19,7 +19,7 @@ class reObj:
 
 
 class reCanvas:
-    def __init__(self, root, width=100, height=100, bd=1, highlightthickness=1, bg="#000000", isdraw=True):
+    def __init__(self, root, width=100, height=100, bd=1, highlightthickness=1, bg="#000000", isdraw=True, colormode="RGB"):
         self.objs = []
         if isdraw: self.canvas = tk.Canvas(root, width=width, height=height,\
                                 bd=bd, highlightthickness=highlightthickness)
@@ -28,7 +28,7 @@ class reCanvas:
         self.root = root
         self.isdraw = draw
         self.basebuf = None
-        self.buf = Image.new("RGB", (self.x, self.y), "white")
+        self.buf = Image.new(colormode, (self.x, self.y), "white")
         self.screen = ImageTk.PhotoImage(self.buf, master=self.root)
         if self.isdraw: self.image_screen = self.canvas.create_image(0, 0, anchor="nw", image=self.screen)
         self.draw = None
