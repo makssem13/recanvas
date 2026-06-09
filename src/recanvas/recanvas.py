@@ -1,6 +1,5 @@
 from enum import Enum, auto
 from PIL import Image, ImageDraw, ImageTk
-import tkinter as tk
 
 class reObjT(Enum):
     OVAL = auto()
@@ -21,7 +20,9 @@ class reObj:
 class reCanvas:
     def __init__(self, root, width=100, height=100, bd=1, highlightthickness=1, bg="#000000", isdraw=True, colormode="RGB"):
         self.objs = []
-        if isdraw: self.canvas = tk.Canvas(root, width=width, height=height,\
+        if isdraw:
+            import tkinter as tk
+            self.canvas = tk.Canvas(root, width=width, height=height,\
                                 bd=bd, highlightthickness=highlightthickness)
         self.x = width
         self.y = height
