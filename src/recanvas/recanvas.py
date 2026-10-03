@@ -60,6 +60,14 @@ class reCanvas:
     
     def move(self, objid, x, y):
         obj = self.objs[objid]
+        if obj.type = reObjT.POLY:
+            xyf = True # x or y flag
+            new_coords = []
+            for x in range(len(obj.coords)):
+                new_coords.append(obj.coords[x] + x if xyf else y)
+                xyf = not xyf
+            obj.coords = tuple(new_coords)
+            return
         x1, y1, x2, y2 = obj.coords
         obj.coords = (x1 + x, y1 + y, x2 + x, y2 + y)
 
