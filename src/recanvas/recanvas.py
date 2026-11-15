@@ -60,7 +60,7 @@ class reCanvas:
     
     def move(self, objid, x, y):
         obj = self.objs[objid]
-        if obj.type = reObjT.POLY:
+        if obj.type == reObjT.POLY:
             xyf = True # x or y flag
             new_coords = []
             for x in range(len(obj.coords)):
